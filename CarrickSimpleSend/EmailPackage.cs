@@ -19,7 +19,7 @@ namespace CarrickSimpleSend
         public EmailPackage()
         {
             FilesPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            Files = Directory.EnumerateFiles(FilesPath, "*", SearchOption.AllDirectories)
+            Files = Directory.EnumerateFiles(FilesPath, "*", SearchOption.TopDirectoryOnly)
                     .Select(Path.GetFileName)
                     .ToList();
             Files.RemoveAll(EndsWithExe);
@@ -33,7 +33,7 @@ namespace CarrickSimpleSend
             Console.WriteLine($"Sending TO: {DestinationEmail}\n");
             Console.WriteLine($"The following files will be sent:");
             ListFilesToSend();
-            Console.WriteLine("\nPress any key to send email...\n");
+            Console.WriteLine("\nPress any key to start sending email...\n");
             Console.ReadKey();
         }
 
